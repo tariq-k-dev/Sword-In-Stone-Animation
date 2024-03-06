@@ -170,17 +170,19 @@
     </main>
 
     <script>
-      document.addEventListener("DOMContentLoaded", (event) => {
-        const videoElem = document.querySelector('video');
+      document.addEventListener('DOMContentLoaded', (event) => {
+        function removeSpinnerShowVideo() {
+          const spinnerDiv = document.querySelector('.lds-spinner');
 
-        videoElem.addEventListener("loadeddata", () => {
-          if (videoElem.readyState === 4) {
-            const spinnerDiv = document.querySelector('.lds-spinner');
+          if (videoElem.readyState === 4 && !Object.is(document.querySelector('.lds-spinner'), null)) {
             spinnerDiv.remove();
             videoElem.removeAttribute('hidden');
+            videoElem.removeEventListener('canplaythrough', removeSpinnerShowVideo, false);
           }
-        });
+        }
 
+        const videoElem = document.querySelector('video');
+        videoElem.addEventListener('canplaythrough', removeSpinnerShowVideo, false);
       });
     </script>
   </body>
