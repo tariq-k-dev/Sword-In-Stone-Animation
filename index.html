@@ -177,8 +177,6 @@
         videoElem.addEventListener("loadeddata", () => {
           if (videoElem.readyState === 4) {
             spinnerDiv.remove();
-            videoElem.removeAttribute('width');
-            videoElem.removeAttribute('height');
             videoElem.removeAttribute('hidden');
           }
         });
