@@ -172,10 +172,10 @@
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
         const videoElem = document.querySelector('video');
-        const spinnerDiv = document.querySelector('.lds-spinner');
 
         videoElem.addEventListener("loadeddata", () => {
           if (videoElem.readyState === 4) {
+            const spinnerDiv = document.querySelector('.lds-spinner');
             spinnerDiv.remove();
             videoElem.removeAttribute('hidden');
           }
